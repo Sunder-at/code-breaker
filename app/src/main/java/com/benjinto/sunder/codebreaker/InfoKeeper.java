@@ -11,6 +11,7 @@ public class InfoKeeper {
     public int buttonStart=0;
     public int buttonPeriod=2;
     public int buttonOffset=0;
+    public boolean doOffsetFlag = true;
     public Paint paint = new Paint();
     public Paint backgroundPaint = new Paint();
 

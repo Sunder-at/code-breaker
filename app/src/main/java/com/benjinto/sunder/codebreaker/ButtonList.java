@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.XmlResourceParser;
 import android.graphics.Color;
+import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
@@ -101,18 +102,22 @@ public class ButtonList extends Fragment {
         Button b1 = new Button(getActivity());
         Button b2 = new Button(getActivity());
         Button b3 = new Button(getActivity());
+        Button b4 = new Button(getActivity());
         b1.setText(String.valueOf(b1Text));
         b2.setText(String.valueOf(b2Text));
         b3.setText(String.valueOf(b3Text));
+        b4.setText("X");
 
         b1.setOnTouchListener(new View.OnTouchListener(){
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 ClipData clipData = new ClipData(ClipData.newPlainText("", ""));
                 mListener.setButtonListButton(fragIndex,0);
+                View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder();
                 view.startDrag(clipData, new View.DragShadowBuilder(), null, 0);
                 return true;
             }
+
         });
         b2.setOnTouchListener(new View.OnTouchListener(){
             @Override
@@ -132,14 +137,24 @@ public class ButtonList extends Fragment {
                 return true;
             }
         });
+        b4.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                mListener.destroyButtonList(fragIndex);
 
+                return true;
+            }
+        });
         ll.setBackgroundColor(Color.argb(100,20,20,20));
         al.add(b1);
         al.add(b2);
         al.add(b3);
+        al.add(b4);
+
         ll.addView(b1);
         ll.addView(b2);
         ll.addView(b3);
+        ll.addView(b4);
 
         ll.setWeightSum(2.0f);
 
@@ -181,5 +196,6 @@ public class ButtonList extends Fragment {
         void onInstantiated(int fragCount);
         View getViewHere(int id);
         void setButtonListButton(int fragIndex, int buttonType);
+        void destroyButtonList(int fragId);
     }
 }
