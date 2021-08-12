@@ -1,4 +1,4 @@
-package com.benjinto.sunder.codebreaker;
+package com.sunder.codebreaker;
 
 import android.graphics.Paint;
 import android.support.v4.app.Fragment;

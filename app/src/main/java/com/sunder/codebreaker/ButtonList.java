@@ -1,4 +1,4 @@
-package com.benjinto.sunder.codebreaker;
+package com.sunder.codebreaker;
 
 import android.content.ClipData;
 import android.content.ClipDescription;
